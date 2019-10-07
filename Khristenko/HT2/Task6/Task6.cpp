@@ -33,7 +33,7 @@ int main()
 		new_chis[0] = new_chis[1];
 		new_chis[1] = temp;
 	} else if (a > 2) {
-		for (int k = a - 1; k > 0; k++) {
+		for (int k = a - 1; k > 0; k--) {
 			if (new_chis[k] > new_chis[k - 1] && k - 1 > 0 ) {
 				temp = new_chis[k];
 				new_chis[k] = new_chis[k - 1];
@@ -55,7 +55,6 @@ int main()
 		for (int i = 0; i < a; i++) cout << new_chis[i];
 	}
 	cout << endl;
-
 	getch();
 	return 0;
 }
