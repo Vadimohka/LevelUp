@@ -2,7 +2,7 @@
 using namespace std;
 int main()
 {
-	int   k, a1, b; float s = 0;
+	int   k, a1, b; float s = 0,p=1;
 	cout << "k=";
 	cin >> k;
 
@@ -26,7 +26,7 @@ int main()
 				if (a1 <= j && j <= b && a1 <= b)
 				{
 					s += a[i][j];
-
+					p*= a[i][j];
 				}
 			}
 		}
@@ -37,7 +37,7 @@ int main()
 				if (b <= j && j <= a1)
 				{
 					s += a[i][j];
-
+					p *= a[i][j];
 				}
 			}
 		}
@@ -45,7 +45,7 @@ int main()
 		a1++;
 		b--;
 	}
-	cout << s;
+	cout << s << "\t"<< p;
 	for (int i = 0; i < k; i++) {
 		cout << "\n";
 		for (int j = 0; j < k; j++)
