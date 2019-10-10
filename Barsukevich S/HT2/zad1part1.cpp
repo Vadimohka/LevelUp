@@ -4,45 +4,45 @@ int main()
 {
 	int   k, a1, b; float s = 0;
 	cout << "k=";
-    cin>> k;
-	
-	float** a; 
+	cin >> k;
+
+	float** a;
 	a = new float* [k];
 	for (int i = 0; i < k; i++)
-		a[i] =  new float [k];
+		a[i] = new float[k];
 	for (int i = 0; i < k; i++)
 		for (int j = 0; j < k; j++)
 			cin >> a[i][j];
 	a1 = 0;
-	b = k-1;
+	b = k - 1;
 
-	
-	for (int j = 0; j < k; j++)
+
+	for (int i = 0; i < k; i++)
 	{
 		if (b - a1 >= 0) {
-			
-			for (int i = 0; i < k; i++)
+
+			for (int j = 0; j < k; j++)
 			{
-				if (a1 <= i && i <= b && a1<=b)
+				if (a1 <= j && j <= b && a1 <= b)
 				{
 					s += a[i][j];
-					
+
 				}
 			}
 		}
-		
+
 		else {
-            for (int i = 0; i < k; i++)
+			for (int j= 0; j < k; j++)
 			{
-				if (b <= i && i <= a1)
+				if (b <= j && j <= a1)
 				{
 					s += a[i][j];
-					
+
 				}
 			}
 		}
-		
-        a1++;
+
+		a1++;
 		b--;
 	}
 	cout << s;
@@ -52,10 +52,10 @@ int main()
 			cout << a[i][j] << " ";
 	}
 	for (int i = 0; i < k; i++)
-	  delete[] a[i];
-		delete[] a;
-	
+		delete[] a[i];
+	delete[] a;
+
 	return 0;
 
-    }
+}
 
