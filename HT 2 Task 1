@@ -1,0 +1,82 @@
+#pragma hdrstop
+#pragma argsused
+
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+#include <ctime>
+#include <windows.h>
+using namespace std;
+
+int _tmain() {
+	SetConsoleOutputCP(1251);
+	const int size = 3;
+	int arr[size][size];
+	srand(time(NULL));
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			arr[i][j] = rand() % 10 + 1;
+			cout << arr[i][j] << '\t';
+		}
+		cout << endl << endl;
+	}
+
+	int sum1_1 = 0, sum2_1 = 0, sum3_1 = 0, sum1_2 = 0, sum2_2 = 0, sum3_2 = 0,
+		sum1_3 = 0, sum2_3 = 0, sum3_3 = 0;
+	int mult1_1 = 1, mult2_1 = 1, mult3_1 = 1, mult1_2 = 1, mult2_2 = 1,
+		mult3_2 = 1, mult1_3 = 1, mult2_3 = 1, mult3_3 = 1;
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			if ((j > i) && (i + j < size - 1)) {
+				sum1_1 += arr[i][j];
+				mult1_1 *= arr[i][j];
+			}
+			if ((i > j) && (i + j > size - 1)) {
+				sum2_1 += arr[i][j];
+				mult2_1 *= arr[i][j];
+			}
+			if ((i > j) && (i + j < size - 1)) {
+				sum1_2 += arr[i][j];
+				mult1_2 *= arr[i][j];
+			}
+			if ((i < j) && (i + j > size - 1)) {
+				sum2_2 += arr[i][j];
+				mult2_2 *= arr[i][j];
+			}
+			if ((j > i) && (i + j < size - 1)) {
+				sum1_3 += arr[i][j];
+				mult1_3 *= arr[i][j];
+			}
+			sum2_3 += arr[i][j];
+			mult2_3 *= arr[i][j];
+		}
+	}
+
+
+	sum3_1 = sum1_1 + sum2_1;
+	mult3_1 = mult1_1 * mult2_1;
+	cout << "Сумма элементов из заштрихованной области в первом случае равна "
+		<< sum3_1 << endl;
+	cout << "Произведение элементов из заштрихованной области в перовом случае равно "
+		<< mult3_1 << endl << endl;
+
+	sum3_2 = sum1_2 + sum2_2;
+	mult3_2 = mult1_2 * mult2_2;
+	cout << "Сумма элементов из заштрихованной области во втором случае равна "
+		<< sum3_2 << endl;
+	cout << "Произведение элементов из заштрихованной области во втором случае равно "
+		<< mult3_2 << endl << endl;
+
+
+	sum3_3 = sum2_3 - sum1_3;
+	mult3_3 = mult2_3 / mult1_3;
+	cout << "Сумма элементов из заштрихованной области в третьем случае равна "
+		<< sum3_3 << endl;
+
+
+	cout << "Произведение элементов из заштрихованной области в третьем случае равно "
+		<< mult3_3 << endl << endl;
+
+	getch();
+	return 0;
+}
