@@ -1,0 +1,64 @@
+#pragma hdrstop
+#pragma argsused
+
+#include <iostream>
+#include <conio.h>
+#include <windows.h>
+using namespace std;
+
+int main() {
+	float delimoe, delitel, chastnoe = 0, ostatok;
+	bool C = false;
+	SetConsoleOutputCP(1251);
+
+	cout << "Введите делимое: ";
+	cin >> delimoe;
+	while (cin.fail()) {
+		cin.clear();
+		cin.ignore();
+		cout << "Неправильный ввод" << endl << "Введите делимое: ";
+		cin >> delimoe;
+	}
+
+	cout << "Введите делитель: ";
+	cin >> delitel;
+	while (cin.fail()) {
+		cin.clear();
+		cin.ignore();
+		cout <<  "Неправильный ввод" << endl << "Введите делитель: ";
+		cin >> delitel;
+	}
+
+	while (C == false) {
+		if (delitel != 0) {
+			C = true;
+		}
+		else {
+			cout << endl << "Ошибка";
+			getch();
+			return 0;
+		}
+	}
+
+	for (int i = 0; fabs(delimoe) >= fabs(delitel);) {
+		if (delimoe > 0 && delitel > 0) {
+			i++;
+			delimoe -= delitel;
+			chastnoe = i;
+		}
+		if (delimoe < 0 && delitel < 0) {
+			i++;
+			delimoe -= delitel;
+			chastnoe = i;
+		}
+		if ((delimoe < 0 && delitel > 0) || (delimoe > 0 && delitel < 0)) {
+			i--;
+			delimoe += delitel;
+			chastnoe = i;
+		}
+	}
+	cout << "Частное: " << chastnoe << endl;
+	cout << "Остаток : " << delimoe;
+	getch();
+	return 0;
+}
